@@ -1,0 +1,10 @@
+ 
+    library;
+    class RoutesName {
+  static const home = '/home';
+  static const cartPage = '/cart';
+  static const login = '/login';
+  static const productDetails = '/product-details';
+  static const entryPointUi = '/entry-point-ui';
+
+    }

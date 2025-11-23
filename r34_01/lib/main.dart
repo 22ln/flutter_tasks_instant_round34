@@ -1,16 +1,10 @@
+import 'core/config/config.dart';
 import 'package:flutter/material.dart';
-import 'package:r34_01/widgets/entrypoint_ui.dart';
+import 're_name.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: BottomNavBar());
-  }
+Future<void> main() async {
+  //  Here we are calling the Dependency Injection
+  await DependencyInjection.init();
+  //  This is the main app
+  runApp(const RootApp());
 }
