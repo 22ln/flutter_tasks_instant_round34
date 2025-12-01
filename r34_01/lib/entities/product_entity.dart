@@ -1,17 +1,17 @@
-class Product {
-  final String image;
+class ProductEntity {
+  final String id;
   final String title;
-  final String subtitle;
-  final String price;
-  final String offPrice;
-  final String typeProduct;
+  final String description;
+  final double price;
+  final String image;
+  final String category;
 
-  Product({
-    required this.image,
+  ProductEntity({
+    required this.id,
     required this.title,
-    required this.subtitle,
+    required this.description,
     required this.price,
-    required this.offPrice,
-    required this.typeProduct,
+    required this.image,
+    required this.category,
   });
 }

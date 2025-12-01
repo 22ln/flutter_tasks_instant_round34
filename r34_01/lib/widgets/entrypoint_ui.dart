@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:r34_01/cart_page/cart_page.dart';
-import 'package:r34_01/home_page/home_page.dart';
-import 'package:r34_01/menu_page/menu_page.dart';
-import 'package:r34_01/profile_page/profile_page.dart';
-import 'package:r34_01/save_page/save_page.dart';
+import 'package:r34_01/screens/account_page.dart';
+import 'package:r34_01/screens/cart_page.dart';
+import 'package:r34_01/screens/explor_page.dart';
+import 'package:r34_01/screens/favourite_page.dart';
+import 'package:r34_01/screens/home_page.dart';
 
 
-class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+class EntryPointUi extends StatefulWidget {
+  const EntryPointUi({super.key});
 
   @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
+  State<EntryPointUi> createState() => _EntryPointUiState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _EntryPointUiState extends State<EntryPointUi> {
   int _selectedIndex = 0;
 
   // صفحات التطبيق
-  final List<Widget> _pages = [
+  final List<Widget> pages = [
     const HomePage(),
     // const SavePage(),
     // const CartPage(),
@@ -29,7 +29,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: pages[_selectedIndex],
       bottomNavigationBar: ConvexAppBar(
         height: 46,
         backgroundColor: Colors.green,
@@ -41,8 +41,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           TabItem(icon: Icons.home_outlined, title: 'Home'),
           TabItem(icon: Icons.favorite_border, title: 'Save'),
           TabItem(icon: Icons.shopping_cart, title: 'Cart'),
+          TabItem(icon: Icons.manage_search, title: 'Explor'),
+
           TabItem(icon: Icons.person_outline, title: 'Profile'),
-          TabItem(icon: Icons.menu, title: 'Menu'),
         ],
         onTap: (int index) {
           setState(() {
