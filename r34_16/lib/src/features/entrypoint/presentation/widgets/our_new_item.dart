@@ -1,3 +1,4 @@
+import 'package:r34_16/src/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class OurNewItem extends StatelessWidget {
@@ -6,11 +7,11 @@ class OurNewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> newItems = [
-      {'title': 'Medium Spice Pack', 'subtitle': 'Onion, Oil, Salt', 'price': '\$35', 'oldPrice': '\$50.32'},
-      {'title': 'Healthy Fruits', 'subtitle': 'Apple, Banana, Orange', 'price': '\$25', 'oldPrice': '\$40'},
-      {'title': 'Breakfast Bundle', 'subtitle': 'Bread, Eggs, Milk', 'price': '\$30', 'oldPrice': '\$45'},
-      {'title': 'Vegetable Mix', 'subtitle': 'Carrot, Tomato, Peas', 'price': '\$20', 'oldPrice': '\$28'},
-      {'title': 'Party Essentials', 'subtitle': 'Juice, Snacks, Cake', 'price': '\$60', 'oldPrice': '\$80'},
+      {'title': 'Medium Spice Pack', 'subtitle': 'Onion, Oil, Salt', 'price': '\$35'},
+      {'title': 'Healthy Fruits', 'subtitle': 'Apple, Banana, Orange', 'price': '\$25'},
+      {'title': 'Breakfast Bundle', 'subtitle': 'Bread, Eggs, Milk', 'price': '\$30'},
+      {'title': 'Vegetable Mix', 'subtitle': 'Carrot, Tomato, Peas', 'price': '\$20'},
+      {'title': 'Party Essentials', 'subtitle': 'Juice, Snacks, Cake', 'price': '\$60'},
     ];
 
     return Padding(
@@ -18,12 +19,13 @@ class OurNewItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Header
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   'Our New Items',
                   style: TextStyle(
                     fontSize: 18,
@@ -31,22 +33,19 @@ class OurNewItem extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    // Navigate to "View All" page
-                  },
-                  child: const Text(
-                    'View All',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                Text(
+                  'View All',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
                   ),
                 ),
               ],
             ),
           ),
+
+          // Horizontal list
           SizedBox(
             height: 160,
             child: ListView.builder(
@@ -57,55 +56,52 @@ class OurNewItem extends StatelessWidget {
 
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ClipRRect(
+                  child: InkWell(
                     borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      width: 140,
-                      color: Colors.grey,
-                      padding: const EdgeInsets.all(12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            item['title']!,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            item['subtitle']!,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Colors.white70,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                item['price']!,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutesName.ournewitemdetails, // make sure to define this route
+                        arguments: item,
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Container(
+                        width: 140,
+                        color: Colors.grey,
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              item['title']!,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
-                              const SizedBox(width: 5),
-                              Text(
-                                item['oldPrice']!,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.white70,
-                                  decoration: TextDecoration.lineThrough,
-                                ),
+                            ),
+                            Text(
+                              item['subtitle']!,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.white70,
                               ),
-                            ],
-                          ),
-                        ],
+                            ),
+                            Text(
+                              item['price']!,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
