@@ -1,6 +1,6 @@
-import 'core/config/config.dart';
+import 'src/core/config/config.dart';
 import 'package:flutter/material.dart';
-import 'core/routes/routes.dart';
+import 'src/core/routes/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RootApp extends StatelessWidget {
@@ -16,7 +16,7 @@ class RootApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter.generateRoute,
-          initialRoute: RoutesName.entryPointUi,
+          initialRoute: RoutesName.splash,
         ),
       ),
     );

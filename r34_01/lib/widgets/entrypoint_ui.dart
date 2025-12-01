@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:r34_01/screens/home_page.dart';
+import 'package:r34_01/cart_page/cart_page.dart';
+import 'package:r34_01/home_page/home_page.dart';
+import 'package:r34_01/menu_page/menu_page.dart';
+import 'package:r34_01/profile_page/profile_page.dart';
+import 'package:r34_01/save_page/save_page.dart';
 
 
-class EntryPointUi extends StatefulWidget {
-  const EntryPointUi({super.key});
+class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({super.key});
 
   @override
-  State<EntryPointUi> createState() => _EntryPointUiState();
+  State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class _EntryPointUiState extends State<EntryPointUi> {
+class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
 
   // صفحات التطبيق

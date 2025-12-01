@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:market_app/screens/home_page.dart'; 
+import 'package:market_app/screens/splash.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const GroceryApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class GroceryApp extends StatelessWidget {
+  const GroceryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Grocery App',
+      title: 'Fresh Market',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
-        fontFamily: 'MainFont', 
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'Poppins',
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
       ),
-      home: const HomePage(), 
+      home: const SplashScreen(),
     );
   }
 }
