@@ -5,8 +5,6 @@ import 'package:r34_01/widgets/home_page/home_category.dart';
 import 'package:r34_01/widgets/home_page/slider.dart';
 import 'package:r34_01/widgets/name_style.dart';
 
-
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -24,9 +22,8 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-actions: [
-  IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-],      ),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+      ),
       drawer: Drawer(
         child: ListView(
           children: [
@@ -52,39 +49,21 @@ actions: [
               padding: const EdgeInsets.all(8.0),
               child: SliderContainer(),
             ),
-            // بتستخدم لما تحتاجي تستني داتا جاية من API أو Database
+
             FutureBuilder(
-              // بنديها ال Future الي هتستناه الي هي getAllProducts
               future: Data().getAllProducts(),
-              // بنحدد نعمل إيه أثناء التحميل، أو عند الخطأ، أو بعد ما الداتا تيجي
               builder: (context, snapshot) {
-                
-                //!أثناء التحميل
-                //لما الـ Future لسه بيحمل بنعرض دايرة التحميل
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return CircularProgressIndicator();
-
-                  //! لو حصل error
-                  //حصل Error من السيرفر  بنعرض رسالة الخطأ
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
-
-                  //! لو الداتا وصلت
-                  // بنخزنها في متغير products.
                 } else if (snapshot.hasData) {
                   final products = snapshot.data!;
 
-                  // ! لو product list فيها عناصر
-                  // نعرض widget اسمها homeCategory
-
                   if (products.isNotEmpty) {
-                    return HomeCategory(
-                      products: products,
-                      categoryLabel: "Popular Package",
-                    );
+                    return HomeCategory(products: products, categoryLabel: "Popular Package");
                   }
                 }
-                //! لو مفيش منتجات خالص
                 return Center(child: Text("Sorry We Are out of goods. 😊"));
               },
             ),
@@ -99,19 +78,16 @@ actions: [
                   final products = snapshot.data!;
 
                   if (products.isNotEmpty) {
-                    return HomeCategory(
-                      products: products,
-                      categoryLabel: "Popular Package",
-                    );
+                    return HomeCategory(products: products, categoryLabel: "Popular Package");
                   }
                 }
                 return Center(child: Text("Sorry We Are out of goods. 😊"));
               },
             ),
-            SizedBox(height: 10,)
           ],
         ),
       ),
     );
   }
 }
+

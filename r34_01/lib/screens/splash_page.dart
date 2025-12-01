@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:r34_01/screens/onboarding_page.dart';
-
 import 'package:r34_01/widgets/name_style.dart';
 
 class SplashPage extends StatefulWidget {

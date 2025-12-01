@@ -20,13 +20,10 @@ class _EntryPointUiState extends State<EntryPointUi> {
   // صفحات التطبيق
   final List<Widget> pages = [
     const HomePage(),
-    const FavouritePage(),
-    const CartPage(),
-    const ExplorPage(),
-    const AccountPage(
-      accountName: 'Arwa Ahmed',
-      email: 'arwa_2779@hotmail.com',
-    ),
+    // const SavePage(),
+    // const CartPage(),
+    // const ProfilePage(),
+    // const MenuPage(),
   ];
 
   @override

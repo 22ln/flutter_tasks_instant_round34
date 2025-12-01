@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
 import 'package:r34_01/entities/product_entity.dart';
-import 'package:r34_01/widgets/cart_page/cart_provider.dart';
-import 'package:r34_01/widgets/favourite_page/favourite_provider.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   final ProductEntity product;
@@ -23,8 +19,8 @@ class ProductDetailsPage extends StatelessWidget {
             height: 300,
             width: double.infinity,
             child: product.image.startsWith('http')
-                ? Image.network(product.image, fit: BoxFit.contain)
-                : Image.asset(product.image, fit: BoxFit.contain),
+                    ? Image.network(product.image, fit: BoxFit.contain)
+                    : Image.asset(product.image, fit: BoxFit.contain),
           ),
 
           DraggableScrollableSheet(
@@ -66,40 +62,12 @@ class ProductDetailsPage extends StatelessWidget {
                     const SizedBox(height: 10),
 
                     // اسم المنتج
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          product.title,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Consumer<FavouriteProvider>(
-                          builder: (context, favouriteProvider, child) {
-                            final isProductFavourite = favouriteProvider
-                                .isFavourite(product);
-                            return IconButton(
-                              onPressed: () {
-                                if (isProductFavourite) {
-                                  favouriteProvider.removeFavorite(product);
-                                } else {
-                                  favouriteProvider.addToFavorite(product);
-                                }
-                              },
-                              icon: Icon(
-                                isProductFavourite
-                                    ? Icons.favorite
-                                    : Icons.favorite_border_outlined,
-                                color: isProductFavourite
-                                    ? Colors.red
-                                    : Colors.grey, // Optional color change
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                    Text(
+                      product.title,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 5),
 
@@ -114,6 +82,7 @@ class ProductDetailsPage extends StatelessWidget {
                             color: Colors.green,
                           ),
                         ),
+  
                       ],
                     ),
                     const SizedBox(height: 15),
@@ -222,12 +191,7 @@ class ProductDetailsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              onPressed: () {
-                Provider.of<CartProvider>(
-                  context,
-                  listen: false,
-                ).addToCart(product);
-              },
+              onPressed: () {},
               child: Text(
                 "Add to Cart",
                 style: TextStyle(

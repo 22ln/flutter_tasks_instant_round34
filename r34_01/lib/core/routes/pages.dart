@@ -5,8 +5,6 @@ import 'package:r34_01/screens/login_page.dart';
 import 'package:r34_01/widgets/entrypoint_ui.dart';
 
 
-
-
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -18,7 +16,11 @@ class AppRouter {
 
       case RoutesName.entryPointUi:
         return MaterialPageRoute(builder: (_) => const EntryPointUi());
-     
+
+      // case RoutesName.productDetails:
+      //   final product = settings.arguments;
+      //   return MaterialPageRoute(
+      //       builder: (_) => ProductDetailsPage(product: product));
 
       default:
         return MaterialPageRoute(

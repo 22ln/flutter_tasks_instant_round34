@@ -18,7 +18,7 @@ class ProductModel extends ProductEntity {
       //  هات العنوان، ولو مش موجود حط بداله نص فاضي ("").
       title: json["title"] ?? "",
       description: json["description"] ?? "",
-      price: json["price"],
+      price: json["price"].toString(),
       image: json["image"] ?? "",
       category: json["category"] ?? "",
     );
