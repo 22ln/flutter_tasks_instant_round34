@@ -1,3 +1,4 @@
+import 'package:r34_16/src/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class PopularPacks extends StatelessWidget {
@@ -5,13 +6,28 @@ class PopularPacks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final List<Map<String, String>> packs = [
-      {'title': 'Family Pack', 'subtitle': 'Rice, Sugar, Pasta', 'price': '\$45'},
-      {'title': 'Snack Pack', 'subtitle': 'Chips, Soda, Cookies', 'price': '\$15'},
+      {
+        'title': 'Family Pack',
+        'subtitle': 'Rice, Sugar, Pasta',
+        'price': '\$45',
+      },
+      {
+        'title': 'Snack Pack',
+        'subtitle': 'Chips, Soda, Cookies',
+        'price': '\$15',
+      },
       {'title': 'BBQ Pack', 'subtitle': 'Meat, Spices, Sauce', 'price': '\$60'},
-      {'title': 'Healthy Pack', 'subtitle': 'Oats, Honey, Yogurt', 'price': '\$30'},
-      {'title': 'Party Pack', 'subtitle': 'Juice, Pizza, Ice Cream', 'price': '\$80'},
+      {
+        'title': 'Healthy Pack',
+        'subtitle': 'Oats, Honey, Yogurt',
+        'price': '\$30',
+      },
+      {
+        'title': 'Party Pack',
+        'subtitle': 'Juice, Pizza, Ice Cream',
+        'price': '\$80',
+      },
     ];
 
     return Padding(
@@ -56,7 +72,13 @@ class PopularPacks extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(15),
-                    onTap: () {},  
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutesName.popularpackdetails,
+                        arguments: pack, // pass your selected pack
+                      );
+                    },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Container(
@@ -68,7 +90,7 @@ class PopularPacks extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              pack['title']!, 
+                              pack['title']!,
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -76,7 +98,7 @@ class PopularPacks extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              pack['subtitle']!, 
+                              pack['subtitle']!,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -87,7 +109,7 @@ class PopularPacks extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  pack['price']!, 
+                                  pack['price']!,
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -96,7 +118,7 @@ class PopularPacks extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 5),
                                 Text(
-                                  '\$100', 
+                                  '\$100',
                                   style: const TextStyle(
                                     fontSize: 12,
                                     color: Colors.white70,

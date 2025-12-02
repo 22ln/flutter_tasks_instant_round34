@@ -5,6 +5,17 @@ class RoutesHandler {
     switch (settings.name){
       case RoutesName.entryPoint:
       return MaterialPageRoute(builder: (context)=> const EntryPointUi());
+      case RoutesName.ournewitemdetails:
+        final args = settings.arguments as Map<String, String>;
+        return MaterialPageRoute(
+          builder: (context) => OurNewItemDetails(item: args),
+        );
+      case RoutesName.popularpackdetails:
+        // Extract arguments passed via Navigator.pushNamed
+        final args = settings.arguments as Map<String, String>;
+        return MaterialPageRoute(
+          builder: (context) => PopularPackDetails(pack: args),
+        );
       default:
       return MaterialPageRoute(
         builder: (context) => const Scaffold(
